@@ -7,6 +7,7 @@ use App\Http\Resources\Product\ProductCollection;
 use App\Http\Resources\Product\ProductResource;
 use App\Model\Product;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -89,7 +90,7 @@ class ProductController extends Controller
     {
           $request['detail'] = $request->description ;
 
-          unset($request->description );
+          unset($request->desbcription );
         $product->update($request->all());
         return response([
             " data" => new ProductResource($product)
@@ -104,6 +105,7 @@ class ProductController extends Controller
     }
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response(null,200); 
     }
 }
