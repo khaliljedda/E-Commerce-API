@@ -11,10 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        factory(App\User::class,5)->create();
          $this->call([
              ProductSeeder::class,
              ReviewSeeder::class
          ]);
-
+        
     }
 }
